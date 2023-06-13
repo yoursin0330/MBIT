@@ -4,7 +4,7 @@ const facebookShare = document.querySelector(".facebook_share");
 /////// 카카오 공유 코드 ////////
 
 const kakaoShare = document.querySelector(".kakao_share");
-Kakao.init("JavaScript 키를 입력하세요");
+Kakao.init("3af12f365173d136fa5729b4a1feb284");
 // Kakao.isInitialized();
 
 function sendLink() {
@@ -53,18 +53,13 @@ $(function () {
   $("meta[property='og\\:url']").attr("content", url);
   $("meta[property='og\\:image']").attr("content", img);
 });
-
+// clipboard api를 이용한 클립보드 복사
 function copyUrl() {
-  let tmp = document.createElement("input");
-  let url = location.href;
+  const url = window.location.href;
 
-  document.body.appendChild(tmp);
-  tmp.value = url;
-  tmp.select();
-  document.execCommand("copy");
-  document.body.removeChild(tmp);
-
-  alert("URL이 복사되었습니다");
+  navigator.clipboard.writeText(url).then(() => {
+    alert("URL이 복사되었습니다");
+  });
 }
 
 function sharefacebook() {
